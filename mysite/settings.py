@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'd5',
+        'NAME': '3403151_riyad',
         'USER': '3403151_riyad',
         "password": 'rs3112001',
         "HOST" : 'fdb25.awardspace.net',
