@@ -1,0 +1,58 @@
+{% load static %}
+{% include 'head.html' %}
+
+<body>
+    {% include 'navbar.html' %}
+
+    <br>
+    <section class="content-page">
+        <div class="container">
+            <div class="row row-cols-lg-2 row-cols-sm-1 row-cols-md-2">
+                <img class="main-img" src="{{ series.image.url }}">
+                <div>
+                    <div class="tittle">
+                        <h1>{{ series.title }}</h1>
+                     </div>
+                    <p class="about-tx">
+
+                        {{ series.content }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <section class="episodes">
+        <div class="container">
+            <div class="tag-name">
+                <h2>
+                    الحلقات
+                </h2>
+            </div>
+            <div class="row row-cols-lg-3 row-cols-sm-2 row-cols-md-4">
+                {% for episode in episodes %}
+                    <div class="box-item card">
+                    <div class="item-img">
+                        <a href="{% url 'episode' episode.slug episode.id %}">
+                            <img src="{{ episode.image.url}}">
+                        </a>
+                    </div>
+                    <div class="item-name">
+                        <a href="{% url 'episode' episode.slug episode.id %}">
+                            <h4>{{ episode.title }}</h4>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% include 'footer.html' %}
+
+
+  
+
+
+    
+

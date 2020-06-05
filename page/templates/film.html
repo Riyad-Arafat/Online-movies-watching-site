@@ -1,0 +1,67 @@
+{% load static %}
+{% include 'head.html' %}
+<body>
+    {% include 'navbar.html' %}
+
+     <br>
+    <section class="content-page">
+        <div class="container">
+            <div class="row row-cols-lg-2 row-cols-sm-1 row-cols-md-2">
+                <img class="main-img" src="{{ film.image.url }}">
+                <div>
+                    <div class="tittle">
+                        <h1>{{ film.title }}</h1>
+                    </div>
+                    <p class="about-tx">
+                        {{ film.content }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+
+    <section class="watch-section">
+
+        <div class="container">
+            <div class="kind">
+                <h3> مشاهدة الفيلم </h3>
+            </div>
+            <div class="screen">
+                {{ film.watch | safe }}
+
+            </div>
+
+
+        </div>
+
+    </section>
+    <br>
+    <section class="download">
+
+        <div class="container">
+            <div class="row row-cols-12">
+                <ul>
+                    <li>الجودة: Full HD</li>
+                    <li>
+                        <a class="btn btn-primary" target="_blank" herf="{{ film.download_url }}">تحميل</a>
+
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </section>
+
+    <br>
+
+
+{% include 'footer.html' %}
+
+
+  
+
+
+    
+

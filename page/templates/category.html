@@ -1,0 +1,55 @@
+{% load static %}
+{% include 'head.html' %}
+<body>
+{% include 'navbar.html' %}
+    {% if films %}
+    <div class="catogrie-title">
+       <h1>افلام</h1>
+    </div>
+    <section class="catogrie-section">
+        <div class="container-fluid">
+            <div class="row row-cols-lg-5 row-cols-sm-2 row-cols-md-4">
+                {% for film in films %}
+                <div class="box-item card">
+                    <div class="item-img">
+                        <a href="{% url 'film' film.id film.slug%}">
+                            <img src="{{ film.image.url }}">
+                        </a>
+                    </div>
+                    <div class="item-name">
+                        <a href="{% url 'film' film.id film.slug %}">
+                            <h4>{{ film.title }}</h4>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+    {% if episodes %}
+    <section class="catogrie-section">
+        <div class="container-fluid">
+            <div class="row row-cols-lg-5 row-cols-sm-2 row-cols-md-4">
+                {% for episode in episodes %}
+                <div class="box-item card">
+                    <div class="item-img">
+                        <a href="{% url 'episode' episode.slug episode.id%}">
+                            <img src="{{ episode.image.url }}">
+                        </a>
+                    </div>
+                    <div class="item-name">
+                        <a href="{% url 'episode' episode.slug episode.id%}">
+                            <h4>{{ episode.title }}</h4>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+{% include 'footer.html' %}
+</body>
+</html>

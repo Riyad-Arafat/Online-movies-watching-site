@@ -1,0 +1,139 @@
+{% load static %}
+{% include 'head.html' %}
+{% include 'navbar.html' %}
+<body>
+
+<!---- minimum slides is 6 -->
+    <br>
+    {% if series.count >= 6 %}
+    <section class="swiper-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="swiper-boxes col-12">
+                    <div class="swiper-wrapper">
+                        {% for series in series1 %}
+                        <div class="swiper-slide">
+                            <div class="box-swiper-item">
+                                <div class="box-swiper-img">
+                                    <a href="{% url 'series' series.id series.slug %}">
+                                        <img src="{{ series.image.url }}">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+    <br>
+
+    <div class="catogrie-title">
+       <h1>افلام</h1>
+    </div>
+    {% if film_tags %}
+    <section class="tag-section">
+        <div class="tag-bar swiper-container">
+            <div class="swiper-wrapper">
+                {% for tag in film_tags %}
+                <div class="swiper-slide">
+                    <div class="item">
+                        <a class="nav-link" href="{% url 'tags_film' tag.id  tag.slug %}">{{ tag.title }}</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-button swiper-button-next"></div>
+            <div class="swiper-button swiper-button-prev"></div>
+        </div>
+    </section>
+    {% endif %}
+    <br>
+    <section class="catogrie-section">
+        <div class="container-fluid">
+            <div class="row row-cols-lg-5 row-cols-sm-2 row-cols-md-4">
+                {% for film in films %}
+
+                    <div class="box-item card">
+                        <div class="item-img">
+                            <a href="{% url 'film' film.id film.slug %}">
+                                <img src="{{ film.image.url }}">
+                            </a>
+                        </div>
+                        <div class="item-name">
+                            <a href="{% url 'film' film.id film.slug %}">
+                                <h4>{{ film.title }}</h4>
+                            </a>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+
+            <div>
+                <a href="{% url 'category' 1 'افلام' %}">
+                    <div class="more-btn">
+                        <h2>المزيد</h2>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <div class="catogrie-title">
+       <h1>أخر الحلقات</h1>
+    </div>
+    <section class="tag-section">
+        <div class="tag-bar swiper-container">
+            <div class="swiper-wrapper">
+                {% for tag in series_tags %}
+                <div class="swiper-slide">
+                    <div class="item">
+                        <a class="nav-link" href="{% url 'tags_series' tag.id%}">{{ tag.title }}</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-button swiper-button-next"></div>
+            <div class="swiper-button swiper-button-prev"></div>
+        </div>
+    </section>
+    <br>
+    <section class="catogrie-section">
+        <div class="container-fluid">
+            <div class="row row-cols-lg-5 row-cols-sm-2 row-cols-md-4">
+                {% for episode in episodes %}
+                <div class="box-item card">
+                    <div class="item-img">
+                        <a href="{% url 'episode' episode.slug episode.id%}">
+                            <img src="{{ episode.image.url }}">
+                        </a>
+                    </div>
+                    <div class="item-name">
+                        <a href="{% url 'episode' episode.slug episode.id%}">
+                            <h4>{{ episode.title }}</h4>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <di>
+                <a href="{% url 'category' 2 'مسلسلات' %}">
+                    <div class="more-btn">
+                        <h2>المزيد</h2>
+                    </div>
+                </a>
+            </di>
+
+        </div>
+    </section>
+
+
+
+{% include 'footer.html' %}
