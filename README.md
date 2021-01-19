@@ -1,4 +1,4 @@
-# Electredo
+# Online movie watching site
 Django app
 This is a small project and the first one that I developed in Django
 
